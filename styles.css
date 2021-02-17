@@ -19,6 +19,10 @@ body {
   font-size: 1.5rem;
   display: flex;
   flex-wrap: wrap;
+  background-image: url(./img/home-img.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
 
 header{
