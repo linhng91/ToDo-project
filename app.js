@@ -100,18 +100,18 @@ function render(){
     }
 }
 
-function renderTask(selectedList) {
-    selectedList.task.forEach(task =>){
-        const taskElement = document.importNode(taskTemplate.content, true)
-        const checkbox = taskElement.querySelector('input')
-        checkbox.id = task.id
-        checkbox.checked = task.complete
-        conts label = taskElement.querySelector('label')
-        label.htmlFor = task.id
-        label.append(task.name)
-        tasksContainer.appendChild(taskElement)
-    }
-}
+function renderTasks(selectedList) {
+    selectedList.tasks.forEach(task => {
+      const taskElement = document.importNode(taskTemplate.content, true)
+      const checkbox = taskElement.querySelector('input')
+      checkbox.id = task.id
+      checkbox.checked = task.complete
+      const label = taskElement.querySelector('label')
+      label.htmlFor = task.id
+      label.append(task.name)
+      tasksContainer.appendChild(taskElement)
+    })
+  }
 
 function renderTaskCount(selectedList){
     const incompleteTasksCount = selectedList.tasks.filter(task => !task.complete).length
