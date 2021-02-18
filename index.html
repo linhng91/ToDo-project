@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;1,200;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css" />
-    <script defer src="./script.js"></script>
+    <script defer src="./app.js"></script>
 </head>
 <body>
     <header>
@@ -31,7 +31,7 @@
         </form>
     </div>
 
-        
+
                 <!-- list-task -->
 
     <div class="todo-list" data-list-display-container>
@@ -42,7 +42,7 @@
 
         <div class="todo-body">
             <div class="tasks" data-tasks></div>  <!--contain all the tasks in template-->
-                
+
             <div class="new-task-creator">
                 <form action="" data-new-task-form>
                     <input data-new-task-input type="text" class="new task" placeholder="new task name" aria-label="new task name"/>
@@ -57,8 +57,8 @@
         </div>
     </div>
 
-    <template id="task-template"> <!--Allows you to add code that won't be render in HTML 
-        but yes in JS. Compared with the other task elements(check task 1), 
+    <template id="task-template"> <!--Allows you to add code that won't be render in HTML
+        but yes in JS. Compared with the other task elements(check task 1),
         you must delete some elements to have it as much generic as possible-->
         <div class="task">
             <input type="checkbox"/>
