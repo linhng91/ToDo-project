@@ -23,6 +23,7 @@ body {
   background-image: url(./img/home-img.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+
 }
 
 header{
@@ -292,3 +293,4 @@ form {
   padding: 0.8rem;
   background: var(--clr-light);
 }
+
