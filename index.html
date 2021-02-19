@@ -1,71 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To do list</title>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;1,200;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css" />
-    <script defer src="./script.js"></script>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>TODO List</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <link href="https://fonts.googleapis.com/css?family=Hind&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;1,200;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 </head>
 <body>
-    <header>
-        <div>
-            <img src="./img/logo.png">
-        </div>
-        <div>
-            <h1 class="title">Don't forget all what you need to <sup>do...</sup></h1>
-        </div>
-    </header>
-    <div class="all-tasks">
-        <h2 class="task-list-title"></h2>
-        <ul class="task-list" data-lists></ul>
-
-        <form action="" data-new-list-form>
-            <input type="text" class="new list" placeholder="new list name" aria-label="new list name" data-new-list-input/>
-            <button class="btn create" aria-label="create new list">+</button>
-        </form>
-    </div>
-
-        
-                <!-- list-task -->
-
-    <div class="todo-list" data-list-display-container>
-        <div class="todo-header">
-            <h2 class="list-title" data-list-title>Web Development</h2>
-            <p class="task-count" data-list-count>3 tasks remaining</p>
-        </div>
-
-        <div class="todo-body">
-            <div class="tasks" data-tasks></div>  <!--contain all the tasks in template-->
-                
-            <div class="new-task-creator">
-                <form action="" data-new-task-form>
-                    <input data-new-task-input type="text" class="new task" placeholder="new task name" aria-label="new task name"/>
-                    <button class="btn create" aria-label="create new task">+</button>
-                </form>
+    <div class="row center-xs">
+        <div class="col-xs-6">
+            <div class="box">
+                <header>
+                    <div>
+                        <img src="./img/logo.png">
+                    </div>
+                    <div>
+                        <h1 class="title">Don't forget all what you need to <sup>do...</sup></h1>
+                    </div>
+                </header>
+                <div class="inputDiv">
+    	        <input type="text" class="input" placeholder="What Do You Want to Do...">
+    	        <button class="add"><i class="fas fa-plus"></i></button>
             </div>
-
-            <div class="delete-stuff">
-                <button class="btn delete" data-clear-complete-task>Clear done tasks</button>
-                <button class="btn delete" data-delete-list-button>Delete list</button>
+            <div class="container">
+            </div>
             </div>
         </div>
     </div>
 
-    <template id="task-template"> <!--Allows you to add code that won't be render in HTML 
-        but yes in JS. Compared with the other task elements(check task 1), 
-        you must delete some elements to have it as much generic as possible-->
-        <div class="task">
-            <input type="checkbox"/>
-            <label>
-                <span class="custom-checkbox"></span>
-            </label>
-        </div>
-    </template>
+
+    
+    <script src='app.js'></script>
 </body>
 </html>
