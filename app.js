@@ -1,141 +1,88 @@
-const listsContainer = document.querySelector('[data-lists]')
-const newListForm = document.querySelector('[data-new-list-form')
-const newListInput = document.querySelector('[data-new-list-input')
-const deleteListButton = document.querySelector('[data-delete-list-button]')
-const listDisplayContainer = document.querySelector('[data-list-display-container]')
-const listTitleElement = document.querySelector('[data-list-title]')
-const listCountElement = document.querySelector('[data-list-count]')
-const tasksContainer = document.querySelector('[data-tasks]')
-const taskTemplate = document.getElementById('task-template')
-const newTaskForm = document.querySelector('[data-new-task-form]')
-const newTaskInput = document.querySelector('[data-new-task-input]')
-const clearCompleteTasksButton = document.querySelector('[data-clear-complete-task')
+const container = document.querySelector('.container');
+var inputValue = document.querySelector('.input');
+const add = document.querySelector('.add');
 
-const LOCAL_STORAGE_LIST_KEY ='task.lists'
-const LOCAL_STORAGE_LIST_ID_KEY ='task.selectedListId'
-let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || []
-let selectedListId = localStorage.getItem(LOCAL_STORAGE_LIST_ID_KEY)
+if(window.localStorage.getItem("todos") == undefined){
+     var todos = [];
+     window.localStorage.setItem("todos", JSON.stringify(todos));
+}
 
-listsContainer.addEventListener('click', e => {
-    if (e.target.tagName.toLowerCase() === 'li'){
-        selectedListId = e.target.dataset.listID
-        saveAndRender()
+var todosEX = window.localStorage.getItem("todos");
+var todos = JSON.parse(todosEX);
+
+
+class item{
+	constructor(name){
+		this.createItem(name);
+	}
+    createItem(name){
+    	var itemBox = document.createElement('div');
+        itemBox.classList.add('item');
+
+    	var input = document.createElement('input');
+    	input.type = "text";
+    	input.disabled = true;
+    	input.value = name;
+    	input.classList.add('item_input');
+
+    	var edit = document.createElement('button');
+    	edit.classList.add('edit');
+    	edit.innerHTML = "EDIT";
+    	edit.addEventListener('click', () => this.edit(input, name));
+
+    	var remove = document.createElement('button');
+    	remove.classList.add('remove');
+    	remove.innerHTML = 'REMOVE';
+    	remove.addEventListener('click', () => this.remove(itemBox, name));
+
+    	container.appendChild(itemBox);
+
+        itemBox.appendChild(input);
+        itemBox.appendChild(edit);
+        itemBox.appendChild(remove);
+
     }
-})
 
-tasksContainer.addEventListener('click', e => {
-    if (e.target.tagName.toLowerCase() === 'input') {
-        const selectedList = list.find(list => list.id === selectedListId)
-        const selectedTask = selectedList.task.find(task => task.id === e.target.id)
-        selectedTask.complete = e.target.checked
-        save ()
-        renderTaskCount(selectedList)
-    }
-})
-
-clearCompleteTasksButton.addEventListener('click', e=> {
-    const selectedList = lists.find(list => list.id === selectedListId)
-    selectedList.tasks = selectedList.tasks.filter(task => !task.complete)
-    saveAndRender()
-})
-
-deleteListButton.addEventListener('click', e =>{
-    lists = lists.filter(list => list.id !== selectedListId)
-    selectedListId = null
-    saveAndRender()
-})
-
-newListForm.addEventListener('submit', e =>{
-    e.preventDefault()
-    const listName = newListInput.value
-    if (listName == null || listName === '') return
-    const list = createList(listName)
-    newListInput.value = null
-    lists.push(list)
-    saveAndRender()
-})
-
-newTaskForm.addEventListener('submit', e =>{
-    e.preventDefault()
-    const taskName = newTaskInput.value
-    if (taskName == null || taskName === '') return
-    const task = createTask(taskName)
-    newTaskInput.value = null
-    const selectedList = lists.find(list => list.id === selectedListId)
-    selectedList.tasks.push(task)
-    saveAndRender()
-})
-
-function createList(name){
-    return { id: Date.now().toString(), name: name, tasks: [] }
-}
-
-function createTask(name){
-    return { id: Date.now().toString(), name: name, complete: false }
-}
-
-function saveAndRender(){
-    save()
-    render()
-}
-
-function save(){
-    localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists))
-    localStorage.setItem(LOCAL_STORAGE_LIST_ID_KEY, selectedListId)
-}
-
-function render(){
-    clearElement(listsContainer)
-    renderLists()
-
-    const selectedList = list.find(list => list.id === selectedListId)
-    if(selectedListId == null) {
-        listDisplayContainer.style.display ='none'
-    } else{
-        listDisplayContainer.style.display = ''
-        listTitleElement.innerText = selectedListId.name
-        renderTaskCount(selectedList)
-        clearElement(tasksContainer)
-        renderTasks(selectedList)
-    }
-}
-
-function renderTasks(selectedList) {
-    selectedList.tasks.forEach(task => {
-      const taskElement = document.importNode(taskTemplate.content, true)
-      const checkbox = taskElement.querySelector('input')
-      checkbox.id = task.id
-      checkbox.checked = task.complete
-      const label = taskElement.querySelector('label')
-      label.htmlFor = task.id
-      label.append(task.name)
-      tasksContainer.appendChild(taskElement)
-    })
-  }
-
-function renderTaskCount(selectedList){
-    const incompleteTasksCount = selectedList.tasks.filter(task => !task.complete).length
-    const taskString = incompleteTaskCount === 1 ? "task" : "tasks"
-    listCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`
-}
-
-function renderLists(){
-    lists.forEach(list => {
-        const listElement = document.createElement('li')
-        listElement.dataset.listId = list.id
-        listElement.classList.add("list-name")
-        listElement.innerText = list.name
-        if (list.id === selectedListId) {
-            listElement.classList.add('active-list')
+    edit(input, name){
+        if(input.disabled == true){
+           input.disabled = !input.disabled;
         }
-        listsContainer.appendChild(listElement)
-    })
-}
+    	else{
+            input.disabled = !input.disabled;
+            let indexof = todos.indexOf(name);
+            todos[indexof] = input.value;
+            window.localStorage.setItem("todos", JSON.stringify(todos));
+        }
+    }
 
-function clearElement(element){
-    while (element.firstChild) {
-        element.removeChild(element.firstChild)
+    remove(itemBox, name){
+        itemBox.parentNode.removeChild(itemBox);
+        let index = todos.indexOf(name);
+        todos.splice(index, 1);
+        window.localStorage.setItem("todos", JSON.stringify(todos));
     }
 }
 
-render()
+add.addEventListener('click', check);
+window.addEventListener('keydown', (e) => {
+	if(e.which == 13){
+		check();
+	}
+})
+
+function check(){
+	if(inputValue.value != ""){
+		new item(inputValue.value);
+        todos.push(inputValue.value);
+        window.localStorage.setItem("todos", JSON.stringify(todos));
+		inputValue.value = "";
+	}
+}
+
+
+for (var v = 0 ; v < todos.length ; v++){
+    new item(todos[v]);
+}
+
+
+new item("sport");
