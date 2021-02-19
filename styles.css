@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 body{
   height: 100%;
   background: url(./img/home-img.jpg);
@@ -11,6 +12,20 @@ background-repeat: no-repeat;
 background-size: cover;
   box-sizing: border-box;
 font-family: 'Poppins', sans-serif;
+=======
+body {
+  color: var(--clr-dark);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  font-weight: 300;
+  font-size: 1.5rem;
+  display: grid;
+  grid: "header header header header" auto "...... lists  active ......" auto/1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
+  background-image: url(./img/home-img.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+>>>>>>> f52ac575aa34d9e73bce8286f4b5c991a931dfbc
 }
 header{
 width: 100%;
@@ -119,3 +134,17 @@ cursor: pointer;
 }
 
 
+<<<<<<< HEAD
+=======
+.delete-stuff {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: -35px;
+  padding: 0.8rem;
+  background: var(--clr-light);
+}
+
+>>>>>>> f52ac575aa34d9e73bce8286f4b5c991a931dfbc
