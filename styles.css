@@ -4,40 +4,56 @@
   box-sizing: border-box;
 }
 
-
 body{
-  height: 100%;
-  background: url(./img/home-img.jpg);
-background-repeat: no-repeat;
-background-size: cover;
+  width: 100%;
+  height: auto;
+  background: url(./img/img-home.jpg);
+  background-repeat: no-repeat repeat;
+  background-size: cover;
   box-sizing: border-box;
-font-family: 'Poppins', sans-serif;
+  background-size: 100%;
+  font-family: 'Poppins', sans-serif;
 
 }
 header{
 width: 100%;
 justify-content: center;
-grid-area: header;
+display: flex;
+flex-direction: column;
+}
+header div{
+  display: flex;
+  justify-content: center;
 }
 header div img{
-opacity: 0.8;
-margin-left: 45%;
-width: 10%;
+opacity: 0.9;
 margin-top: 5rem;
-margin-right: 45%;
+width: 15rem;
 justify-self: center;
 }
 
 h1.title, h1.title sup {
 font-size: 2rem;
-margin-top: 5rem;
+font-weight: 300;
 text-align: center;
-margin-bottom: 5rem;
+margin-bottom: 4rem;
 }
 h1.title sup{
-text-decoration: underline var(--clr-primary);
+text-decoration: underline #84cb60;
+font-weight: 400;
 display: contents;
 color: #c22426;
+}
+
+h2{
+  margin-top: 6rem;
+  font-weight: 300;
+  font-size: 1.2rem;
+  letter-spacing: 0.2rem;
+  margin-bottom: 1.8rem;
+}
+h2 span{
+  color: white;
 }
 
 .inputDiv{
@@ -50,29 +66,36 @@ align-items: center;
   padding: 0.5rem 1rem;
   outline: none;
   border: none;
-  height: 50px;
-  border-radius: 25px;
-  width: 350px;
+  height: 60px;
+  width: 550px;
+  border-radius: 10px;
   margin: 0.25rem;
   transition: .5s;
   font-size: 1.15rem;
+  background: rgba(255, 255, 255, 0.3);
+}
+::placeholder{
+  color: #333;
+  font-family: 'Poppins', sans-serif;
 }
 
 .add{
-outline: none;
+  outline: none;
   border: none;
   height: 50px;
   border-radius: 25px;
   width: 50px;
-  background-color: #333;
-  color: white;
+  background-color: transparent;
+  color: #c22426;
   cursor: pointer;
+  font-size: 2rem;
   transition: .5s;
   margin: 0.25rem;
 }
 
 .add:hover{
-opacity: 0.7;
+color: white;
+background-color: #c22426;
 }
 
 .container{
@@ -85,18 +108,23 @@ margin-top: 2rem;
 }
 
 .item{
-padding: 0.5rem;
-border-bottom: 4px solid #333;
+padding: 0.2rem;
+border-bottom: 4px dotted rgba(255,255,255, 0.5);
 margin-bottom: 1.5rem;
+justify-content: space-between;
+display: flex;
+width: 600px;
 }
 
 .item_input{
 background: none;
 outline: none;
 border: none;
+padding-right: 1rem;
 color: #333;
-font-size: 1.4rem;
-width: 245px;
+font-size: 1.3rem;
+width: 500px;
+font-family: 'Poppins', sans-serif;
 }
 
 .edit{
@@ -104,8 +132,9 @@ background: none;
 outline: none;
 border: none;
 color: #333;
-font-size: 1rem;
-font-family: 'Hind', sans-serif;
+font-weight: 600;
+font-size: 0.9rem;
+font-family: 'Popins', sans-serif;
 margin: 0 0.5rem;
 cursor: pointer;
 }
@@ -114,23 +143,18 @@ cursor: pointer;
 background: none;
 outline: none;
 border: none;
-color: grey;
-font-size: 1rem;
-font-family: 'Hind', sans-serif;
+font-weight: 600;
+color: #333;
+font-size: 0.9rem;
+font-family: 'Popins', sans-serif;
 cursor: pointer;
 }
 
-.delete-stuff {
-  display: flex;
-  justify-content: space-around;
-  position: absolute;
-  width: 100%;
-  left: 0;
-  bottom: -35px;
-  padding: 0.8rem;
-  background: var(--clr-light);
+.remove:hover{
+  text-decoration: line-through #c22426;
+  color: white;
+}
+.edit:hover{
+  color:white;
 }
 
-.remove:hover {
-  color: red;
-}
