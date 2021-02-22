@@ -13,6 +13,7 @@ body{
   box-sizing: border-box;
   background-size: 100%;
   font-family: 'Poppins', sans-serif;
+
 }
 header{
 width: 100%;
@@ -148,6 +149,7 @@ font-size: 0.9rem;
 font-family: 'Popins', sans-serif;
 cursor: pointer;
 }
+
 .remove:hover{
   text-decoration: line-through #c22426;
   color: white;
