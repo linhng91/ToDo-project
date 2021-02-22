@@ -155,4 +155,12 @@ cursor: pointer;
 .edit:hover{
   color:white;
 }
-
+footer{
+  justify-content: center;
+    background: white;
+    height: 5rem;
+    padding: 1rem;
+    opacity: 0.5;
+    display: flex;
+    margin-top: 2rem;
+}
