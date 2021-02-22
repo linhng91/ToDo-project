@@ -1,7 +1,8 @@
+//Date
 var dt = new Date();
 document.getElementById("datetoday").innerHTML = dt.toLocaleDateString();
 
-
+//List
 
 const container = document.querySelector('.container');
 var inputValue = document.querySelector('.input');
